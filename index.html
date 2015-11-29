@@ -41,7 +41,7 @@
     </header>
 
     <main class="mdl-layout__content">
-      <div class="page-content">
+      <div id="thestuffinthepage" class="page-content">
         <h4 id="roster">
         <a href="http://steamcommunity.com/id/CraftedStudios1"><img src="pics/moon.jpg" width="100px"></a> Zuriel<br><br>
         <a href="http://steamcommunity.com/profiles/76561198107487237"><img src="pics/maiden.jpg" width="100px"></a> Mr.Twinkie00 <br><br>
@@ -52,7 +52,8 @@
     <h2 class="mdl-card__title-text">About Zuriel</h2>
   </div>
   <div class="mdl-card__supporting-text">
-    Zuriel is the main late game core on the team his favorite hero is Mirana
+    Zuriel is the late game core on the team his favorite hero is Mirana<br>
+    <img src="pics/mirana.png" width="200px">
   </div>
 </div>
 <br><br><br>
@@ -61,7 +62,8 @@
 <h2 class="mdl-card__title-text">About Mr.Twinkie00</h2>
 </div>
 <div class="mdl-card__supporting-text">
-Mr.Twinkie00 is the support on the team his favorite hero is Crystal Maiden
+Mr.Twinkie00 is the support on the team his favorite hero is Crystal Maiden<br>
+<img src="pics/Crystal_Maiden.png" width="200px">
 </div>
 </div>
 <br><br><br>
@@ -70,13 +72,21 @@ Mr.Twinkie00 is the support on the team his favorite hero is Crystal Maiden
 <h2 class="mdl-card__title-text">About AFriendlyTrashcan</h2>
 </div>
 <div class="mdl-card__supporting-text">
-AFriendlyTrashcan is the midgame core on the team his favorite hero is Meepo
+AFriendlyTrashcan is the midgame core on the team his favorite hero is Meepo<br>
+<img src="pics/Meepo.png" width="200px">
 </div>
 </div>
       </h4>
+      <span id="tinytext">Don't click on this text btw</span>
       </div>
     </main>
   </div>
-
+<script>
+var tinytext = document.getElementById("tinytext")
+var thestuffinthepage = document.getElementById("thestuffinthepage")
+tinytext.addEventListener("click", function(){
+  thestuffinthepage.innerHTML = "<img src='pics/lenny.jpg'>"
+});
+</script>
 </body>
 </html>

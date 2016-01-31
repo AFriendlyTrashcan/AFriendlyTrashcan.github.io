@@ -1,0 +1,370 @@
+<HTML>
+
+<head>
+
+  <title>Simply Survival</title>
+  <link rel="shortcut icon" href="http://storage.googleapis.com/catmeows.net/ssi.ico"/>
+  <style>
+
+  #scavenge{
+    cursor:pointer;
+    color:rgb(0, 153, 255);
+
+  }
+
+  #eat{
+  cursor:pointer;
+  color:rgb(0, 153, 255);
+
+  }
+
+  #name{
+    cursor:pointer;
+    color:rgb(0, 153, 255);
+
+  }
+  #numDay{
+      font-size:0;
+  }
+
+  </style>
+
+
+
+</head>
+
+
+
+<body>
+
+
+	<link rel="shortcut icon" href="http://storage.googleapis.com/catmeows.net/favicon.ico"/>
+
+  You have <span id="numFood">0</span> food,
+
+   <span id="numWater">0</span> water<br
+
+   ><br><a id="name">You</a><br><span id="energy">0</span>
+
+   energy<br><span id="numSanity">20</span> sanity<br>
+
+   <a id="scavenge">Scavenge for supplies</a>
+
+   <br>
+
+   <a id="eat">Eat food and drink water</a>
+
+    <br>
+
+<span id="numDay"></span>
+
+
+
+
+
+
+  <script>
+
+  var day = 0;
+
+  var food = 0;
+
+  var water = 0;
+
+  var energy = 5;
+
+  var deaths = 0;
+
+  var didja = false;
+
+  var sanity = [10]
+
+  var joinedOn = [0]
+
+  var trueSanity = sanity
+
+  var groupMembers = 1;
+
+  var aliveMembers = 1;
+
+  var memberEnergy = [5];
+
+  var memberNames = ["You"];
+
+  var memberTimeEat = [0]
+
+  var isScavenging = [false]
+
+  var currentMember = 0;
+
+  var numDay = document.getElementById("numDay");
+
+  var numFood = document.getElementById("numFood");
+
+  var numWater = document.getElementById("numWater");
+
+  var numEnergy = document.getElementById("energy");
+
+  var scavenge = document.getElementById("scavenge");
+
+  var eat = document.getElementById("eat");
+
+  var nameSwitch = document.getElementById("name")
+
+  var numSanity = document.getElementById("numSanity")
+
+  numSanity.textContent = trueSanity
+
+  numEnergy.textContent = energy;
+
+  var actionsToday = 0;
+
+  var timeEat = 0;
+
+  var newDay = function(){
+
+    memberEnergy[currentMember] -= 1;
+    energy = memberEnergy[currentMember]
+    actionsToday += 1;
+   isScavenging[currentMember] = true;
+    numEnergy.textContent = energy
+
+    if(memberEnergy[currentMember] === 0){
+        deaths++;
+        sanity[currentMember] = 0
+    if(sanity[currentMember] <= 0 && sanity[currentMember] - (deaths * 5) - (joinedOn[currentMember] * 5) <= 0){
+        trueSanity = 0;
+        numSanity.textContent = trueSanity
+    }else{
+        trueSanity = sanity[currentMember] - (deaths * 5) - (joinedOn[currentMember] * 5)
+        numSanity.textContent = trueSanity
+
+    }
+    if(sanity[0] - (deaths * 5) <= 0){
+        location.reload()
+    }
+
+    numSanity.textContent = trueSanity
+        alert(memberNames[currentMember] + " Died!")
+
+        if(currentMember === 0){
+            location.reload()
+        }
+
+    }
+
+
+  }
+  var restDay = function(){
+    actionsToday += 1;
+    memberEnergy[currentMember] -= 1;
+    isScavenging[currentMember] = true;
+    energy = memberEnergy[currentMember]
+    numEnergy.textContent = energy;
+  }
+  var finishDay = function(){
+    day++;
+    numDay.textContent = day;
+    for(var i=0; i<memberNames.length;i++){
+     isScavenging[i] = false
+    }
+  }
+
+  var eatFood = function(){
+
+      if(food > 0 && water > 0 && energy !== 0){
+    food -= 1;
+    water -= 1;
+    timeEat++;
+    sanity[currentMember] += 1
+    if(sanity[currentMember] <= 0 && sanity[currentMember] - (deaths * 5) - (joinedOn[currentMember] * 5) <= 0){
+        trueSanity = 0;
+    }else{
+        trueSanity = sanity[currentMember] - (deaths * 5) - (joinedOn[currentMember] * 5)
+
+    }
+    numSanity.textContent = trueSanity
+    for(var i=0; i < memberEnergy.length; i++){
+        memberTimeEat[i]++;
+    }
+
+    memberTimeEat[currentMember] = timeEat;
+    memberEnergy[currentMember] += 1;
+
+    energy = memberEnergy[currentMember]
+    numDay.textContent = day
+
+    numFood.textContent = food
+
+    numWater.textContent = water
+
+    numEnergy.textContent = energy
+
+      }
+
+  }
+
+  var goScavenge = function(){
+
+    if(energy > 0 && trueSanity > 0){
+
+    food += Math.round(Math.floor(Math.random() * (3 - 0)) + 0);
+
+    water += Math.round(Math.floor(Math.random() * (3 - 0)) + 0);
+
+    newDay();
+
+    numDay.textContent = day
+
+    numFood.textContent = food
+
+    numWater.textContent = water
+
+    numEnergy.textContent = energy
+    isScavenging[currentMember] = true;
+    if(Math.round(Math.floor(Math.random() * (9 - 0)) + 0) === 3 && memberEnergy[currentMember] !== 1){
+        deaths++;
+        memberEnergy[currentMember] = 0;
+        energy = memberEnergy[currentMember]
+        alert(memberNames[currentMember] + " got attacked by bandits!")
+        numEnergy.textContent = energy
+        sanity[currentMember] = 0
+        numSanity.textContent = sanity[currentMember]
+        if(memberEnergy[0] === 0){
+            location.reload()
+        }
+    if(sanity[0] - (deaths * 5) <= 0){
+        location.reload()
+    }
+    }
+
+
+    if(Math.round(Math.floor(Math.random() * (10 - 0)) + 0) > 8 && memberEnergy[0] > 0){
+        var firstName  = Math.round(Math.floor(Math.random() * (15 - 0)) + 0);
+        if (firstName === 0){
+            var firstNameString = "Billy";
+        }else if(firstName === 1){
+            var firstNameString = "Bobby"
+        }else if(firstName === 2){
+            var firstNameString = "Timmy"
+        }else if(firstName === 3){
+            var firstNameString = "Joey"
+        }else if(firstName === 4){
+            var firstNameString = "Kyle"
+        }else if(firstName === 5){
+            var firstNameString = "Alex"
+        }else if(firstName === 6){
+            var firstNameString = "Wilfred"
+        }else if(firstName === 7){
+            var firstNameString = "Alan"
+        }else if(firstName === 8){
+            var firstNameString = "Ryan"
+        }else if(firstName === 9){
+            var firstNameString = "Wyatt"
+        }else if(firstName === 10){
+            var firstNameString = "Robert"
+        }else if(firstName === 11){
+            var firstNameString = "Amy"
+        }else if(firstName === 12){
+            var firstNameString = "Marigold"
+        }else if(firstName === 13){
+            var firstNameString = "Hannah"
+        }else if(firstName === 14){
+            var firstNameString = "Anna"
+        }else{
+            var firstNameString = "Petunia"
+        }
+        var lastName  = Math.round(Math.floor(Math.random() * (12 - 0)) + 0);
+        if(lastName === 0){
+            var lastNameString = "Robertson"
+        }else if(lastName === 1){
+            var lastNameString = "Warfstache"
+        }else if(lastName === 2){
+            var lastNameString = "Smith"
+        }else if(lastName === 3){
+            var lastNameString = "Johnson"
+        }else if(lastName === 4){
+            var lastNameString = "Jones"
+        }else if(lastName === 5){
+            var lastNameString = "Ricardo"
+        }else if(lastName === 6){
+            var lastNameString = "Brown"
+        }else if(lastName === 7){
+            var lastNameString = "Wilson"
+        }else if(lastName === 8){
+            var lastNameString = "Martin"
+        }else if(lastName === 9){
+            var lastNameString = "White"
+        }else if(lastName === 10){
+            var lastNameString = "Lee"
+        }else if(lastName === 11){
+            var lastNameString = "Gonzalez"
+        }else if(lastName === 12){
+            var lastNameString = "Lee"
+        }
+
+        joinedOn.push(deaths)
+        memberNames.push(firstNameString + " " + lastNameString)
+        memberEnergy.push(Math.round(Math.floor(Math.random() * (4 - 1)) + 1))
+        memberTimeEat.push(timeEat)
+        sanity.push(10)
+        numSanity.textContent = sanity[currentMember]
+        alert(firstNameString + " " + lastNameString + " has joined your group")
+        groupMembers++
+        gn.textContent = groupMembers;
+
+
+
+
+    }
+
+    }
+
+  }
+
+  var switchName = function(){
+    if(currentMember >= memberNames.length - 1){
+    currentMember = 0;
+    nameSwitch.textContent = memberNames[currentMember];
+    energy = memberEnergy[currentMember]
+    numEnergy.textContent = energy;
+
+    }else{
+    currentMember++;
+    nameSwitch.textContent = memberNames[currentMember];
+    energy = memberEnergy[currentMember]
+    numEnergy.textContent = energy;
+    numSanity.textContent = sanity[currentMember]
+    }
+        if(sanity[currentMember] <= 0 && sanity[currentMember] - (deaths * 5) - (joinedOn[currentMember] * 5)  <= 0){
+        trueSanity = 0;
+    }else{
+        trueSanity = sanity[currentMember] - (deaths * 5) - (joinedOn[currentMember] * 5)
+
+    }
+    numSanity.textContent = trueSanity
+  }
+  var debug = function(){
+      alert(numEnergy[currentMember])
+  }
+
+  scavenge.addEventListener("click", goScavenge);
+
+  eat.addEventListener("click", eatFood);
+
+  nameSwitch.addEventListener("click", switchName);
+   if (actionsToday === memberNames.length){
+       finishDay();
+       alert("newday")
+   }
+  </script>
+
+</body>
+
+
+
+
+
+
+
+</HTML>

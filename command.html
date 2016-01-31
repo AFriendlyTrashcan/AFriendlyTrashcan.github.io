@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Command Line Adventured</title>
+    <style>
+        body {
+            background-color:black;
+            color:white;
+        }
+        input {
+            border-width:0px;
+            background-color:black;
+            color:white;
+            width:100%;
+            outline-width: 0;
+        }
+    </style>
+</head>
+<span id="text">Welcome to Command Line Adventure type begin to begin<br></span>
+<input id="input" type="text">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    var input = document.getElementById("input");
+    var text = document.getElementById("text");
+    var noHighlight = "";
+    var level = 0;
+    var addVal420 = 0;
+    var removeVal420 = 0;
+    var nos = 0;
+    var nnos = 0;
+
+    document.addEventListener("click", function(){
+        input.select();
+    });
+    input.select();
+    if(level == 0) {
+        input.addEventListener('keypress', function (e) {
+            if(level == 0){
+            var key = e.which || e.keyCode;
+            if (key === 13 && level == 0) {
+                if (level == 0) {
+                    text.innerHTML += input.value + "<br>";
+                }
+                if (input.value.indexOf("begin") != -1) {
+                    noHighlight = input.value;
+                    input.value = "";
+                    input.select();
+                    input.value = noHighlight;
+                    nextLevel1();
+                    level = 1;
+                } else {
+                    text.innerHTML += "Error: Command not recognized<br>";
+                }
+                input.value = "";
+            }
+            }
+        });
+    };
+    var nextLevel1 = function(){
+        text.innerHTML += "Level 1: What do all pros use to rek skrebs? Commands: Add, Remove, Submit<br>";
+        input.addEventListener('keypress', function (e) {
+            var key = e.which || e.keyCode;
+            if(level == 1) {
+                if (key === 13 && level == 1) {
+                    if (level == 1) {
+                        text.innerHTML += input.value + "<br>";
+                    }
+                    if (input.value.indexOf("add") == 0) {
+                        input.value = input.value.slice(4);
+                        addVal420 = input.value;
+                    } else if (input.value.indexOf("remove") == 0) {
+                        input.value = input.value.slice(7);
+                        removeVal420 = input.value;
+                    } else if (input.value == "submit") {
+                        if (addVal420 == 360 && removeVal420 == "scope") {
+                            level = 2;
+                            text.innerHTML += "Level 1 Complete!<br>"
+                            addVal420 = 0;
+                            removeVal420 = 0;
+                            nextLevel2();
+                            input.value = "";
+                        } else if (addVal420 == 360 && removeVal420 == "scope") {
+                            text.innerHTML += "Set your sights higher! Incorrect! <br>What do all pros use to rek skrebs?<br>"
+                            removeVal420 = 0;
+                            addVal420 = 0;
+                            input.value = ""
+                        } else {
+
+                            text.innerHTML += "Incorrect!<br>What do all pros use to rek skrebs?<br>"
+                            removeVal420 = 0;
+                            addVal420 = 0;
+                            input.value = ""
+                        }
+                    } else if(input.value == "hint") {
+                        text.innerHTML += "Spin around and then have no scope<br>";
+                    }else{
+                        text.innerHTML += "Error: Command not recognized<br>";
+                    }
+                    input.value = "";
+                }
+            };  });
+    };
+    var nextLevel2 = function(){
+      text.innerHTML += "Level 2: Shall you fight the dragon?<br>"
+        if(level == 2) {
+            console.log("level 2 called")
+            input.addEventListener('keypress', function (e) {
+                var key = e.which || e.keyCode;
+                if (key === 13 && level == 2) {
+                    if(level == 2){
+                        text.innerHTML += input.value + "<br>";
+                    }
+                    if( input.value == "no" && nos == 0 && level == 2){
+                        text.innerHTML += "Are you sure?<br>"
+                        input.value = ""
+                    nos++;
+                    }else if(input.value == "yes" && nos == 1 && level == 2){
+                        text.innerHTML += "Cmon please?<br>";
+                        nos++;
+                        input.value = ""
+                    }else if(input.value == "no" && nos == 2 && level == 2){
+                        text.innerHTML += "Fine I didn't want you to fight the dragon anyways ;_;<br>Level 2 Complete!<br>"
+                        level = 3;
+                        nextLevel3();
+                        nos = 0;
+                        input.value = "";
+                    }else if(input.value != "no" && nos == 0 && level == 2 && input.value != "hint"){
+                        text.innerHTML += "You died fighting the dragon! Incorrect!<br>Shall you fight the dragon?<br>"
+                        nos = 0;
+                        input.value = "";
+                    }else if(input.value != "yes" && nos == 1 && level == 2 && input.value != "hint"){
+                        text.innerHTML += "You died fighting the dragon! Incorrect!<br>Shall you fight the dragon?<br>"
+                        nos = 0;
+                        input.value = "";
+                    }else if(input.value != "no" && nos == 2 && level == 2 && input.value != "hint"){
+                        text.innerHTML += "You died fighting the dragon! Incorrect<br>Shall you fight the dragon?<br>"
+                        nos = 0;
+                        input.value = "";
+                    }else if(nos != 0 && level == 2 && input.value != "hint"){
+                        text.innerHTML += "Incorrect!<br>Shall you fight the dragon?<br>";
+                        nos = 0;
+                        input.value = "";
+                    }else if(level == 2 && input.value == "hint") {
+                        text.innerHTML += "You do NOT need a hint for this level!<br>"
+                        input.value = "";
+                    }else if(level == 2){
+                        text.innerHTML += "Error: Command not recognized<br>";
+                        input.value = "";
+                    }
+
+                };
+                });
+            };
+        };
+    var nextLevel3 = function(){
+        nos = 0;
+        text.innerHTML += "Level 3: Survival is...?<br>"
+        if(level == 3) {
+            console.log(nos)
+            input.addEventListener('keypress', function (e) {
+                var key = e.which || e.keyCode;
+                if (key === 13) {
+                    if(level == 3) {
+                        text.innerHTML += input.value + "<br>";
+                    }
+                    if(input.value == "simple" && nos == 0 && level == 3){
+                        text.innerHTML += "Actually it's complicated<br>";
+                        nos++;
+                        input.value = ""
+                        console.log("first called")
+                    }else if(input.value == "oh" && nos == 1 && level == 3){
+                        text.innerHTML += "Did you know that?<br>"
+                        nos++;
+                        input.value = ""
+                    }else if(input.value == "no" && nos == 2 && level == 3){
+                        text.innerHTML += "Well, remember that now<br>"
+                        text.innerHTML += "Level 3 Complete!<br>"
+                        nos = 0;
+                        input.value = "";
+                        level = 4;
+                        nextLevel4();
+                    }else if(input.value != "simple" && nos == 0 && level == 3 && input.value != "hint"){
+                        text.innerHTML += "Incorrect!<br>Survival is...?<br>";
+                        nos = 0;
+                        input.value = ""
+                    }else if(input.value != "oh" && nos == 1 && level == 3 && input.value != "hint"){
+                        text.innerHTML += "Incorrect!<br>Survival is...?<br>";
+                        nos = 0;
+                        input.value = ""
+                    }else if(input.value == "yes" && nos == 2 && level == 3){
+                        text.innerHTML += "LIAR! Incorrect!<br>Survival is...?<br>";
+                        nos = 0;
+                        input.value = ""
+                    }else if(input.value != "no" == "hint" && nos == 2 && level == 3 && input.value != "hint"){
+                        text.innerHTML += "Incorrect!<br>Survival is...?<br>";
+                        nos = 0;
+                        input.value = ""
+                    }else if(level == 3 && nos == 0 && input.value == "hint") {
+                        text.innerHTML += "Self Advertisement FTW<br>"
+                        input.value = ""
+                    }else if(nos == 1 && level == 3 && input.value == "hint") {
+                        text.innerHTML += "lmn_p<br>";
+                        input.value = ""
+                    }else if(nos == 2 && level == 3 && input.value == "hint") {
+                        text.innerHTML += "No hint necessary<br>"
+                        input.value = ""
+                    }else if(level == 3){
+                        text.innerHTML += "Error: Command not recognized<br>"
+                        input.value = ""
+                    }
+                }
+            });
+        }
+    }
+    var nextLevel4 = function(){
+        text.innerHTML += "Level 3: True = Y?<br>"
+        if(level == 4) {
+        input.addEventListener('keypress', function (e) {
+
+            if (level == 4) {
+                var key = e.which || e.keyCode;
+                if (key === 13 && level == 4) {
+                    if(level == 4) {
+                        text.innerHTML += input.value + "<br>";
+                    }
+                    if (level == 4 && input.value == "y" || level == 4 && input.value == "Y"){
+                        text.innerHTML += "Level 4 Complete!<br>"
+                        input.value = "";
+                        level = 5;
+                        nextLevel5();
+                    }else if(level == 4 && input.value == "hint"){
+                        text.innerHTML += "USE YOUR LOGIC<br>"
+                        input.value = "";
+                    }else if(level == 4){
+                        text.innerHTML += "Error: Command not recognized<br>"
+                        input.value = "";
+                    }
+
+                }
+            }
+        });
+        }
+    }
+    var nextLevel5 = function(){
+        text.innerHTML += "Level 5: Last level in the demo! Commands: win, submit<br>";
+        input.addEventListener('keypress', function (e) {
+            var key = e.which || e.keyCode;
+            if (level == 5) {
+                if (key === 13 && level == 5) {
+                    if (level == 5) {
+                        text.innerHTML += input.value + "<br>"
+                    }
+                    if (level == 5 && input.value == "win" ){
+                        nos++;
+                        input.value = "";
+                    }else if(level == 5 && input.value == "submit"){
+                        if(nnos == 0){
+                            if(nos == 7){
+                                text.innerHTML += "Correct! One more.. You can't do it!<br>"
+                                nnos = 1;
+                                input.value = ""
+                                nos = 0;
+                            }else{
+                                text.innerHTML += nos + " is incorrect!<br>"
+                                input.value = ""
+                                nos = 0;
+                            };
+                        }else if(nnos == 1){
+                            if(nos == 19){
+                                text.innerHTML += "Wow you beat the demo!!!<br>The full game will feature 101 levels in the full version and 20 in the free version<br>"
+                                input.value = ""
+                                nos = 0;
+                                nnos = 0;
+                            }else{
+                                text.innerHTML += nos + " is incorrect<br>"
+                                input.value = ""
+                                nos = 0;
+                            }
+                        }
+                    }else if(level == 5 && input.value == "hint"){
+                        text.innerHTML += "Process of elimination<br>"
+                        input.value = ""
+                    }else if(level == 5){
+                        text.innerHTML += "Error: Command not recognized<br>"
+                        input.value = ""
+                    }
+                }
+            }
+        });
+    }
+
+
+</script>
+</body>
+</html>

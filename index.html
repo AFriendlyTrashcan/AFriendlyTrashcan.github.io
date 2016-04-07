@@ -1,92 +1,55 @@
-<!DOCTYPE html>
-<!--Website by AFriendlyTrashcan -->
 <html>
-<head>
-<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
-<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<style>
-.demo-card-wide.mdl-card {
-  width: 512px;
-}
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-  background-color: #0d47a1;
-}
-#redcard{
-  background-color:  #f44336;
-}
-#greencard{
-  background-color:  #4caf50;
-}
+	<head>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+		<title>Wrecking scrubs and dominating pubs</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+		<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+		<style>
+			#page-content{
+				text-align:center;
+				font-family: 'Roboto Condensed';
 
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
-}
-</style>
+			}
 
-</head>
-<body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
 
-        <span class="mdl-layout-title">Lucent Brigade</span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation. We hide it in small screens. -->
 
-      </div>
-    </header>
 
-    <main class="mdl-layout__content">
-      <div id="thestuffinthepage" class="page-content">
-        <h4 id="roster">
-        <a href="http://steamcommunity.com/id/CraftedStudios1"><img src="pics/moon.jpg" width="100px"></a> Zuriel<br><br>
-        <a href="http://steamcommunity.com/profiles/76561198107487237"><img src="pics/maiden.jpg" width="100px"></a> Mr.Twinkie00 <br><br>
-        <a href="http://steamcommunity.com/id/friendliesttrashcan"><img src="pics/trash.png" width="100px"></a> AFriendlyTrashcan<br><br><br><br>
-
-        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">About Zuriel</h2>
+		</style>
+	</head>
+	<body>
+		<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Catmeows.net</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Home</a>
+        <a class="mdl-navigation__link" href="">About</a>
+        <a class="mdl-navigation__link" href="">Games</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Catmeows.net</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="">Home</a>
+      <a class="mdl-navigation__link" href="">About</a>
+      <a class="mdl-navigation__link" href="">Games</a>
+    </nav>
   </div>
-  <div class="mdl-card__supporting-text">
-    Zuriel is the late game core on the team his favorite hero is Mirana<br>
-    <img src="pics/testmirana.png" width="200px">
-  </div>
+  <main class="mdl-layout__content">
+    <div class="page-content" id="page-content"><img src="banner.png"><br> Catmeows.net is the personal site of Alex Deters(AFriendlyTrashcan) where he posts random stuff!</div>
+  </main>
 </div>
-<br><br><br>
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-<div class="mdl-card__title" id="redcard">
-<h2 class="mdl-card__title-text">About Mr.Twinkie00</h2>
-</div>
-<div class="mdl-card__supporting-text">
-Mr.Twinkie00 is the support on the team his favorite hero is Crystal Maiden<br>
-<img src="pics/Crystal_Maiden.png" width="200px">
-</div>
-</div>
-<br><br><br>
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-<div class="mdl-card__title" id="greencard">
-<h2 class="mdl-card__title-text">About AFriendlyTrashcan</h2>
-</div>
-<div class="mdl-card__supporting-text">
-AFriendlyTrashcan is the midgame core on the team his favorite hero is Meepo<br>
-<img src="pics/Meepo.png" width="200px">
-</div>
-</div>
-      </h4>
-      <span id="tinytext">Don't click on this text btw</span>
-      </div>
-    </main>
-  </div>
-<script>
-var tinytext = document.getElementById("tinytext")
-var thestuffinthepage = document.getElementById("thestuffinthepage")
-tinytext.addEventListener("click", function(){
-  thestuffinthepage.innerHTML = "<img src='pics/lenny.jpg'>"
-});
-</script>
-</body>
+
+
+
+
+
+	</body>
 </html>

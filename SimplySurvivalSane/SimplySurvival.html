@@ -34,7 +34,7 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-
+      font-size: calc(2vw + 2vh + 2vmin);
       padding-top: 0px;
       padding-right: 0px;
       padding-bottom: 0px;
@@ -49,26 +49,23 @@
 
 <body>
   <span id='standardBody'>
-    <a href="../index.html"><img src="../catmeowsbeta.png" width="100px"></a><br><br>
     <span id="notreadyyet">
     <h3 id="dayText">Day 1</h3>
     <h2 id="time">1:00 A.M.</h2>
   </span>
-  You have
-  <span id="numFood">0</span> food,
-  <span id="numWater">0</span> water
-  <br>
-  <br>
   <a id="name">You</a>
   <br>
-  <span id="energy">5</span> energy
+  <img src="images/lightning.svg" width=4%> <span id="energy">5</span>
   <br>
-  <span id="numSanity">10</span> sanity
+  <img src="images/brain.svg" width=4%> <span id="numSanity">10</span>
   <br>
   <span id="numTrust"></span>
   <a id="scavenge">Scavenge for supplies<br></a>
   <a id="eat">Eat food and drink water</a>
-  <br>
+  <br><br>
+  You have<br>
+  <span id="numFood">0</span> <img src="images/bread.svg" width=4%> 
+  <span id="numWater">0</span> <img src="images/drop.svg" width=4%><br>
   <span id="numDay"></span>
 </span>
   <script>
@@ -508,7 +505,7 @@
 
         isScavenging[currentMember] = true;
 
-        if (Math.round(Math.floor(Math.random() * (9 - 0)) + 0) === 3 && memberEnergy[currentMember] !== 1 && memberEnergy[currentMember] > 1) {
+        if (Math.round(Math.floor(Math.random() * (9 - 0)) + 0) === 3 && memberEnergy[currentMember] !== 1 && memberEnergy[currentMember] > 1 && memberNames.length > 1) {
 
           deaths++;
 
@@ -761,7 +758,7 @@ var switchName = function() {
       eat.innerHTML = "Bury"
     }else if(energy <= 0 && isBuried[currentMember] == true){
       scavenge.innerHTML = ""
-      eat.innerHTML = ""
+      eat.innerHTML = "<br>"
     }else if(assignMode == true && energy > 0){
       scavenge.innerHTML = ""
       eat.innerHTML = "Select"
@@ -772,7 +769,7 @@ var switchName = function() {
       scavenge.innerHTML = ""
       eat.innerHTML = "Bury"
     }else{
-      scavenge.innerHTML = ""
+      scavenge.innerHTML = "<br>"
       eat.innerHTML = ""
     }
 
@@ -786,7 +783,9 @@ var switchName = function() {
     energy = memberEnergy[currentMember]
 
     numEnergy.textContent = energy;
-
+    if(energy == 0){
+	nameSwitch.innerHTML += '<img src="images/skull.svg" width=4%>'
+    }
     numSanity.textContent = sanity[currentMember]
     numEnergy.textContent = energy;
     if(assignToBury == currentMember && assignMode == true){
@@ -797,7 +796,7 @@ var switchName = function() {
       eat.innerHTML = "Bury"
     }else if(energy <= 0 && isBuried[currentMember] == true){
       scavenge.innerHTML = ""
-      eat.innerHTML = ""
+      eat.innerHTML = "<br>"
     }else if(assignMode == true && energy > 0){
       scavenge.innerHTML = ""
       eat.innerHTML = "Select"
@@ -809,7 +808,7 @@ var switchName = function() {
       eat.innerHTML = "Bury"
     }else{
       scavenge.innerHTML = ""
-      eat.innerHTML = ""
+      eat.innerHTML = "<br>"
     }
   }
 

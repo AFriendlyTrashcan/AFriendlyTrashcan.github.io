@@ -91,15 +91,15 @@ filter: progi:d:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', en
     <body>
         <h2 id="mover"></h2><br>
         <div id="buttonsDiv">
-            <button class="buttons" id="endTurn">End Turn</button>
-            <button class="buttons" onclick="window.location.reload()">Reset</button><br>
+            <button class="buttons" id="endTurn" onclick="copyURL()" ontouchend="copyURL()">End Turn</button>
+            <button class="buttons" onclick="window.location.reload()" ontouchend="window.location.reload()">Reset</button><br>
             <input type="text" id="urlBox" value="aoeu" readonly><br>
         </div>
         <table id="board"></table> 
         <div id="winDiv">
             <h2 id="winText">Wins</h2><br>
-            <button class="buttons" onclick="window.location.href = getDefault()">Play as White</button>
-            <button class="buttons" onclick="override=getDefault(); document.getElementById('endTurn').click()">Play as Red</button>
+            <button class="buttons" ontouchend="window.location.href = getDefault()" onclick="window.location.href = getDefault()">Play as White</button>
+            <button class="buttons" onclick="override=getDefault(); document.getElementById('endTurn').click()" ontouchend="override=getDefault(); document.getElementById('endTurn').click()">Play as Red</button>
         </div>
             <script src="checkers.js"></script>
     </body>

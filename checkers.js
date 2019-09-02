@@ -169,6 +169,7 @@ for(i = 1; i <= 8; i++){
     for(j = 1; j <= 8; j++){
         var space = document.createElement("TD");
         space.setAttribute("onclick","select(this)");
+        space.setAttribute("ontouchend","select(this)");
         space.className = "space " + (((j + (i%2)) % 2 == 0)? "white" : "black");
         space.id = i + "x" + j;
         row.appendChild(space);
@@ -195,7 +196,7 @@ if(params.board){
         
     }
 }
-document.getElementById('endTurn').addEventListener('click', function(){
+function copyURL(){
   var textarea = document.createElement('textarea');
   textarea.textContent = (override?override:getURL());
   document.body.appendChild(textarea);
@@ -210,7 +211,8 @@ document.getElementById('endTurn').addEventListener('click', function(){
   selection.removeAllRanges();
   document.body.removeChild(textarea);
   document.body.innerHTML="<h2>Close the Window<br>+ Paste the Link</h2>";
-})
+};
+
 function finish(){
     window.close();
 }   

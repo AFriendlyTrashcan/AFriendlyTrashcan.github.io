@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta property="og:title" content="SMSCheckers" />
+        <meta property="og:image" content="https://afriendlytrashcan.github.io/checkers.jpg" />
+        <style>
+h2{
+    text-align:center;
+    height:7vmin;
+}
+.row{
+    width: 80vmin;
+        height: 10vmin;
+                margin-left: auto;
+                    margin-right: auto;
+}
+.space{
+    height:10vmin;
+width: 10vmin;
+    border:none;
+    padding:none;
+}
+.white{
+    background-color:white;
+}
+.black{
+    background-color:black;
+}
+.rPiece{
+  height: 8vmin;
+  width: 8vmin;
+background: #a90329; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #a90329 0%, #8f0222 44%, #4f000b 100%, #330000 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, #a90329 0%,#8f0222 44%,#4f000b 100%,#330000 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, #a90329 0%,#8f0222 44%,#4f000b 100%,#330000 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#330000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  border-radius: 50%;
+  display: inline-block;
+}
+.wPiece{
+    height: 8vw;
+    width: 8vw;
+    background: #ffffff; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #ffffff 0%, #6e7774 92%, #6e7774 97%, #0a0809 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%,#6e7774 92%,#6e7774 97%,#0a0809 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center, #ffffff 0%,#6e7774 92%,#6e7774 97%,#0a0809 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progi:d:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#0a0809',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    border-radius: 50%;
+    display: inline-block;
+}
+.piece{
+    border: 2px dotted white;
+}
+.king{
+    border: 2px dotted DarkGoldenRod;
+}
+#buttonsDiv{
+   text-align:center;
+    visibility:hidden;
+    height:0vmin;
+}
+.buttons{
+    width:40vmin;
+}
+#winDiv{
+    text-align:center;
+    height:0px;
+    visibility:hidden;
+}
+#urlBox{
+    width:80vmin;
+}
+        </style> 
+    </head>
+    <body>
+        <h2 id="mover"></h2> 
+        <div id="buttonsDiv">
+            <button class="buttons" id="endTurn">End Turn</button>
+            <button class="buttons" onclick="window.location.reload()">Reset</button>
+            <input type="text" id="urlBox" value="aoeu" readonly>
+        </div>
+
+        <span id="board"></span>
+        <div id="winDiv">
+            <h2 id="winText">Wins</h2><br>
+            <button class="buttons" onclick="window.location.href = getDefault()">Play as White</button>
+            <button class="buttons" onclick="override=getDefault(); document.getElementById('endTurn').click()">Play as Red</button>
+        </div>
+            <script src="checkers.js"></script>
+    </body>
+</html>

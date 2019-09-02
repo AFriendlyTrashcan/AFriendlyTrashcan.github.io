@@ -162,12 +162,12 @@ function select(el){
    }
 }
 for(i = 1; i <= 8; i++){
-    var row = document.createElement("DIV");
+    var row = document.createElement("TR");
     row.className = "row"
     row.id = "row" + i;
     document.getElementById("board").appendChild(row);
     for(j = 1; j <= 8; j++){
-        var space = document.createElement("BUTTON");
+        var space = document.createElement("TD");
         space.setAttribute("onclick","select(this)");
         space.className = "space " + (((j + (i%2)) % 2 == 0)? "white" : "black");
         space.id = i + "x" + j;

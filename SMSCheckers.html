@@ -70,6 +70,11 @@ filter: progi:d:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', en
 #urlBox{
     width:80vmin;
 }
+#board{
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
         </style> 
     </head>
     <body>
@@ -79,8 +84,7 @@ filter: progi:d:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', en
             <button class="buttons" onclick="window.location.reload()">Reset</button>
             <input type="text" id="urlBox" value="aoeu" readonly>
         </div>
-
-        <span id="board"></span>
+        <table id="board"></span>
         <div id="winDiv">
             <h2 id="winText">Wins</h2><br>
             <button class="buttons" onclick="window.location.href = getDefault()">Play as White</button>

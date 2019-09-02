@@ -4,9 +4,14 @@
         <meta property="og:title" content="SMSCheckers" />
         <meta property="og:image" content="https://afriendlytrashcan.github.io/checkers.jpg" />
         <style>
+* {
+   margin: 0px;
+   padding: 0px;
+}
 h2{
     text-align:center;
     height:7vmin;
+    font-size:5vmin;
 }
 .row{
     width: 80vmin;
@@ -61,15 +66,20 @@ filter: progi:d:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', en
 }
 .buttons{
     width:40vmin;
-    height:10vmin;
+    height:6vmin;
+    font-size:5vmin;
 }
 #winDiv{
     text-align:center;
     height:0px;
     visibility:hidden;
 }
+#winText{
+    font-size:7vmin;
+}
 #urlBox{
     width:80vmin;
+    height:2vmin;
 }
 #board{
     margin-left:auto;
@@ -79,13 +89,13 @@ filter: progi:d:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', en
         </style> 
     </head>
     <body>
-        <h2 id="mover"></h2> 
+        <h2 id="mover"></h2><br>
         <div id="buttonsDiv">
             <button class="buttons" id="endTurn">End Turn</button>
             <button class="buttons" onclick="window.location.reload()">Reset</button><br>
             <input type="text" id="urlBox" value="aoeu" readonly><br>
         </div>
-        <table id="board"></span>
+        <table id="board"></table> 
         <div id="winDiv">
             <h2 id="winText">Wins</h2><br>
             <button class="buttons" onclick="window.location.href = getDefault()">Play as White</button>

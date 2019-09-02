@@ -121,7 +121,7 @@ function select(el){
                 document.getElementById("mover").style.visibility = "hidden";
                 document.getElementById("mover").style.height = "0px";
                 document.getElementById("buttonsDiv").style.visibility="visible";
-                document.getElementById("buttonsDiv").style.height="7vw";
+                document.getElementById("buttonsDiv").style.height="10vmin";
                 document.getElementById("urlBox").value = getURL();
                 el.appendChild(selected.childNodes[0]);
                 moved=true;
@@ -151,7 +151,7 @@ function select(el){
                 document.getElementById("mover").style.visibility = "hidden";
                 document.getElementById("mover").style.height = "0px";
                 document.getElementById("buttonsDiv").style.visibility="visible";
-                document.getElementById("buttonsDiv").style.height="7vw";
+                document.getElementById("buttonsDiv").style.height="10vmin";
                 document.getElementById("urlBox").value = getURL();
                 if(checkWin())
                     win();
